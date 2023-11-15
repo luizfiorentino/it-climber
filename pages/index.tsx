@@ -7,6 +7,7 @@ import {
 } from "next";
 import axios from "axios";
 import prisma from "@/prisma/client";
+import Card from "@/components/Card/Card";
 
 type Application = {
   id: number;
@@ -75,12 +76,11 @@ export default function Home({
           />
           <button onClick={submitApplication}>Add</button>
         </div>
-        {response.map((application) => (
-          <>
-            <p>{application.title}</p>
-            <p>{application.company}</p>
-          </>
-        ))}
+        <div className={styles.cardSection}>
+          {response.map((application) => (
+            <Card application={application} />
+          ))}
+        </div>
       </div>
     </main>
   );

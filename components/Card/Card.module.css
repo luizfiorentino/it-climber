@@ -1,0 +1,14 @@
+.card {
+  border: 1px solid red;
+  margin: 1rem 0;
+  padding: 0.5rem;
+  display: flex;
+  flex-direction: column;
+}
+
+@media (min-width: 375px) {
+  .card {
+    margin: 2rem 0;
+    padding: 1rem;
+  }
+}
