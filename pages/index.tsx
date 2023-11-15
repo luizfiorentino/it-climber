@@ -1,15 +1,20 @@
 import { useState } from "react";
 import styles from "./page.module.css";
-import { GetServerSideProps, InferGetServerSidePropsType } from "next";
+import {
+  GetServerSideProps,
+  InferGetServerSidePropsType,
+  GetServerSidePropsResult,
+} from "next";
 import axios from "axios";
 import prisma from "@/prisma/client";
 
 type Application = {
+  id: number;
   title: string;
   company: string;
-  link?: string;
-  description?: string;
-  feedback?: string;
+  link?: string | null;
+  description?: string | null;
+  feedback?: string | null;
 };
 
 export default function Home({
@@ -22,7 +27,6 @@ export default function Home({
   const [feedback, setFeedback] = useState("");
 
   const data = { title, description, company, link, feedback };
-  console.log("reponse??", response);
 
   const submitApplication = async () => {
     await axios.post(`/api/vacancies`, data);
@@ -84,22 +88,21 @@ export default function Home({
 
 export const getServerSideProps: GetServerSideProps<{
   response: Application[];
-}> = async () => {
+}> = async (): Promise<
+  GetServerSidePropsResult<{ response: Application[] }>
+> => {
   try {
     const applications = await prisma.vacancy.findMany();
-    console.log("applications?", applications);
+
     return {
       props: {
         response: applications,
       },
     };
   } catch (error) {
-    console.log("getServerSideProps error fetching applications");
     return {
       props: {
-        response: {
-          applications: [],
-        },
+        response: [],
       },
     };
   }
