@@ -1,9 +1,20 @@
 import { useState } from "react";
 import styles from "./page.module.css";
-
+import { GetServerSideProps, InferGetServerSidePropsType } from "next";
 import axios from "axios";
+import prisma from "@/prisma/client";
 
-export default function Home() {
+type Application = {
+  title: string;
+  company: string;
+  link?: string;
+  description?: string;
+  feedback?: string;
+};
+
+export default function Home({
+  response,
+}: InferGetServerSidePropsType<typeof getServerSideProps>) {
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
   const [company, setCompany] = useState("");
@@ -11,6 +22,7 @@ export default function Home() {
   const [feedback, setFeedback] = useState("");
 
   const data = { title, description, company, link, feedback };
+  console.log("reponse??", response);
 
   const submitApplication = async () => {
     await axios.post(`/api/vacancies`, data);
@@ -59,7 +71,36 @@ export default function Home() {
           />
           <button onClick={submitApplication}>Add</button>
         </div>
+        {response.map((application) => (
+          <>
+            <p>{application.title}</p>
+            <p>{application.company}</p>
+          </>
+        ))}
       </div>
     </main>
   );
 }
+
+export const getServerSideProps: GetServerSideProps<{
+  response: Application[];
+}> = async () => {
+  try {
+    const applications = await prisma.vacancy.findMany();
+    console.log("applications?", applications);
+    return {
+      props: {
+        response: applications,
+      },
+    };
+  } catch (error) {
+    console.log("getServerSideProps error fetching applications");
+    return {
+      props: {
+        response: {
+          applications: [],
+        },
+      },
+    };
+  }
+};
