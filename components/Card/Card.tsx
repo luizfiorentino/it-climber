@@ -1,5 +1,6 @@
 import React, { HTMLAttributes } from "react";
 import styles from "./Card.module.css";
+import Heading from "../atoms/BigText/BigText";
 
 interface CardProps extends HTMLAttributes<HTMLDivElement> {
   application: {
@@ -18,7 +19,8 @@ export default function Card({ application, children, ...props }: CardProps) {
 
   return (
     <div className={styles.card} {...props}>
-      <h2>{title}</h2>
+      <Heading>{title}</Heading>
+
       <p>{company}</p>
       {link && <p>Link: {link}</p>}
       {description && <p>Description: {description}</p>}
