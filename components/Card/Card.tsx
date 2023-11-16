@@ -1,6 +1,8 @@
 import React, { HTMLAttributes } from "react";
 import styles from "./Card.module.css";
-import Heading from "../atoms/BigText/BigText";
+import Heading from "../atoms/BigHeader/BigHeader";
+import SmallHeading from "../atoms/SmallHeader/SmallHeader";
+import RegularText from "../atoms/RegularText/RegularText";
 
 interface CardProps extends HTMLAttributes<HTMLDivElement> {
   application: {
@@ -20,11 +22,13 @@ export default function Card({ application, children, ...props }: CardProps) {
   return (
     <div className={styles.card} {...props}>
       <Heading>{title}</Heading>
-
-      <p>{company}</p>
-      {link && <p>Link: {link}</p>}
-      {description && <p>Description: {description}</p>}
-      {feedback && <p>Feedback: {feedback}</p>}
+      <div className={styles.companyField}>
+        <SmallHeading>@</SmallHeading>
+        <RegularText>{company}</RegularText>
+      </div>
+      {link && <SmallHeading>Link: {link}</SmallHeading>}
+      {description && <RegularText>Description: {description}</RegularText>}
+      {feedback && <RegularText>Feedback: {feedback}</RegularText>}
       {children}
     </div>
   );

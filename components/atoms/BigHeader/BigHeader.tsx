@@ -1,5 +1,5 @@
 import React from "react";
-import styles from "./BigText.module.css";
+import styles from "./BigHeader.module.css";
 import { fontInter } from "../../../styles/fonts";
 
 export interface HeadingProps extends React.HTMLProps<HTMLHeadingElement> {

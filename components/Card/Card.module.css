@@ -6,6 +6,12 @@
   flex-direction: column;
 }
 
+.companyField {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
 @media (min-width: 375px) {
   .card {
     margin: 2rem 0;
