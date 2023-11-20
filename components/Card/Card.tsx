@@ -20,9 +20,8 @@ interface CardProps extends HTMLAttributes<HTMLDivElement> {
 export default function Card({ application, children, ...props }: CardProps) {
   const { id, title, company, link, description, feedback } = application;
   const deleteApplication = async (vacancyId: number | null) => {
-    console.log("vacancy Id?", vacancyId);
     try {
-      await axios.delete(`/api/vacancies/`, { data: { vacancyId } });
+      await axios.delete(`/api/vacancies/${vacancyId}`);
       console.log(`Vacancy with id ${vacancyId} deleted.`);
     } catch (error) {
       console.log("Error deleting vacancy:", error);
