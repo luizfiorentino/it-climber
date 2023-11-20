@@ -78,7 +78,7 @@ export default function Home({
         </div>
         <div className={styles.cardSection}>
           {response.map((application) => (
-            <Card application={application} />
+            <Card key={application.id} application={application} />
           ))}
         </div>
       </div>
