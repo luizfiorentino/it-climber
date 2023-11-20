@@ -3,6 +3,7 @@ import styles from "./Card.module.css";
 import Heading from "../atoms/BigHeader/BigHeader";
 import SmallHeading from "../atoms/SmallHeader/SmallHeader";
 import RegularText from "../atoms/RegularText/RegularText";
+import axios from "axios";
 
 interface CardProps extends HTMLAttributes<HTMLDivElement> {
   application: {
@@ -17,7 +18,16 @@ interface CardProps extends HTMLAttributes<HTMLDivElement> {
 }
 
 export default function Card({ application, children, ...props }: CardProps) {
-  const { title, company, link, description, feedback } = application;
+  const { id, title, company, link, description, feedback } = application;
+  const deleteApplication = async (vacancyId: number | null) => {
+    console.log("vacancy Id?", vacancyId);
+    try {
+      await axios.delete(`/api/vacancies/`, { data: { vacancyId } });
+      console.log(`Vacancy with id ${vacancyId} deleted.`);
+    } catch (error) {
+      console.log("Error deleting vacancy:", error);
+    }
+  };
 
   return (
     <div className={styles.card} {...props}>
@@ -30,6 +40,7 @@ export default function Card({ application, children, ...props }: CardProps) {
       {description && <RegularText>Description: {description}</RegularText>}
       {feedback && <RegularText>Feedback: {feedback}</RegularText>}
       {children}
+      <button onClick={() => deleteApplication(id)}>Delete</button>
     </div>
   );
 }
