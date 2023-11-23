@@ -1,6 +1,3 @@
-// This is your Prisma schema file,
-// learn more about it in the docs: https://pris.ly/d/prisma-schema
-
 generator client {
   provider = "prisma-client-js"
 }
@@ -11,11 +8,47 @@ datasource db {
 }
 
 model Vacancy {
-  id Int @id @default(autoincrement())
-  title String
-  company String
-  link String?
-  description String?
-  feedback String?
-
+  id             Int        @id @default(autoincrement())
+  title          String
+  company        String
+  link           String?
+  description    String?
+  feedback       String?
+  recruiter      String?
+  location       String?
+  language       String?
+  applicationDate DateTime?
+  
+  // Define the many-to-many relation to the Tag model
+  tags           Tag[]      @relation("VacancyToTag")
 }
+
+// Define the Tag model
+model Tag {
+  id        Int      @id @default(autoincrement())
+  name      String
+  vacancies Vacancy[] @relation("VacancyToTag")
+}
+
+// generator client {
+//   provider = "prisma-client-js"
+// }
+
+// datasource db {
+//   provider = "postgres"
+//   url      = env("DATABASE_URL")
+// }
+
+// model Vacancy {
+//   id Int @id @default(autoincrement())
+//   title String
+//   company String
+//   link String?
+//   description String?
+//   feedback String?
+//   recruiter String?
+//   location String?
+//   language String?
+//   applicationDate DateTime?
+
+// }

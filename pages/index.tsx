@@ -26,6 +26,7 @@ export default function Home({
   const [company, setCompany] = useState("");
   const [link, setLink] = useState("");
   const [feedback, setFeedback] = useState("");
+  const [applicationDate, setApplicationDate] = useState("");
 
   const data = { title, description, company, link, feedback };
 
@@ -38,12 +39,31 @@ export default function Home({
     setLink("");
   };
 
+  console.log("application data?", applicationDate);
+
   return (
     <main className={styles.main}>
       <div>
         <h2>Welcome to itClimber</h2>
         <h4>+ New Vacancy</h4>
         <div style={{ display: "flex", flexDirection: "column" }}>
+          <form>
+            <label htmlFor="applicationDate">Application Date:</label>
+            <input
+              type="date"
+              value={applicationDate}
+              onChange={(e) => setApplicationDate(e.target.value)}
+              id="applicationDate"
+              name="applicationDate"
+            />
+            <button
+              type="submit"
+              onClick={() => setApplicationDate(applicationDate)}
+            >
+              Submit
+            </button>
+          </form>
+
           <label>title</label>
           <input
             type="text"
