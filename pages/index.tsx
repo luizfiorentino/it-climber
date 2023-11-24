@@ -27,6 +27,10 @@ export default function Home({
   const [link, setLink] = useState("");
   const [feedback, setFeedback] = useState("");
   const [applicationDate, setApplicationDate] = useState("");
+  const [location, setLocation] = useState("");
+  const [recruiter, setRecruiter] = useState("");
+  const [language, setLanguage] = useState("");
+  const [tag, setTag] = useState("");
 
   const data = { title, description, company, link, feedback };
 
@@ -88,6 +92,30 @@ export default function Home({
             value={link}
             onChange={(e) => setLink(e.target.value)}
           />
+          <label>location</label>
+          <input
+            type="text"
+            value={location}
+            onChange={(e) => setLocation(e.target.value)}
+          />
+          <label>recruiter</label>
+          <input
+            type="text"
+            value={recruiter}
+            onChange={(e) => setRecruiter(e.target.value)}
+          />
+          <label>language</label>
+          <input
+            type="text"
+            value={language}
+            onChange={(e) => setLanguage(e.target.value)}
+          />
+          <label>tag</label>
+          <input
+            type="text"
+            value={tag}
+            onChange={(e) => setTag(e.target.value)}
+          />
           <label>feedback</label>
           <input
             type="text"
@@ -96,6 +124,7 @@ export default function Home({
           />
           <button onClick={submitApplication}>Add</button>
         </div>
+
         <div className={styles.cardSection}>
           {response.map((application) => (
             <Card key={application.id} application={application} />
