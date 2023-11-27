@@ -17,7 +17,7 @@ model Vacancy {
   recruiter      String?
   location       String?
   language       String?
-  applicationDate DateTime?
+  applicationDate String?
   
   // Define the many-to-many relation to the Tag model
   tags           Tag[]      @relation("VacancyToTag")

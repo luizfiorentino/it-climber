@@ -32,18 +32,35 @@ export default function Home({
   const [language, setLanguage] = useState("");
   const [tag, setTag] = useState("");
 
-  const data = { title, description, company, link, feedback };
+  const data = {
+    title,
+    description,
+    company,
+    link,
+    feedback,
+    applicationDate,
+    language,
+    recruiter,
+    location,
+    tag,
+  };
 
   const submitApplication = async () => {
+    console.log("frontend submitapplication called? data?", data);
     await axios.post(`/api/vacancies`, data);
     setCompany("");
     setTitle("");
     setFeedback("");
     setDescription("");
     setLink("");
+    setApplicationDate("");
+    setLanguage("");
+    setRecruiter("");
+    setLocation("");
+    setTag("");
   };
 
-  console.log("application data?", applicationDate);
+  //console.log("application data?", applicationDate);
 
   return (
     <main className={styles.main}>
