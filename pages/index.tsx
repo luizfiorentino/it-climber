@@ -16,6 +16,10 @@ type Application = {
   link?: string | null;
   description?: string | null;
   feedback?: string | null;
+  recruiter?: String;
+  location?: String;
+  language?: String;
+  applicationDate?: String;
 };
 
 export default function Home({
@@ -46,20 +50,24 @@ export default function Home({
   };
 
   const submitApplication = async () => {
-    console.log("frontend submitapplication called? data?", data);
-    await axios.post(`/api/vacancies`, data);
-    setCompany("");
-    setTitle("");
-    setFeedback("");
-    setDescription("");
-    setLink("");
-    setApplicationDate("");
-    setLanguage("");
-    setRecruiter("");
-    setLocation("");
-    setTag("");
+    try {
+      const response = await axios.post(`/api/vacancies`, data);
+      window.location.reload();
+      setCompany("");
+      setTitle("");
+      setFeedback("");
+      setDescription("");
+      setLink("");
+      setApplicationDate("");
+      setLanguage("");
+      setRecruiter("");
+      setLocation("");
+      setTag("");
+    } catch (error) {
+      console.log(`Error submitting the application: ${error}`);
+    }
   };
-
+  console.log("response?", response);
   //console.log("application data?", applicationDate);
 
   return (
