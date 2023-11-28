@@ -8,6 +8,7 @@ import {
 import axios from "axios";
 import prisma from "@/prisma/client";
 import Card from "@/components/Card/Card";
+import Heading from "@/components/atoms/BigHeader/BigHeader";
 
 type Application = {
   id: number;
@@ -25,6 +26,7 @@ type Application = {
 export default function Home({
   response,
 }: InferGetServerSidePropsType<typeof getServerSideProps>) {
+  const [openForm, setOpenForm] = useState(false);
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
   const [company, setCompany] = useState("");
@@ -68,16 +70,17 @@ export default function Home({
     }
   };
   console.log("response?", response);
-  //console.log("application data?", applicationDate);
 
   return (
     <main className={styles.main}>
       <div>
-        <h2>Welcome to itClimber</h2>
-        <h4>+ New Vacancy</h4>
-        <div style={{ display: "flex", flexDirection: "column" }}>
-          <form>
-            <label htmlFor="applicationDate">Application Date:</label>
+        <Heading>Welcome to itClimber</Heading>
+        <button onClick={() => setOpenForm(!openForm)}>
+          {openForm ? "Hide form" : "+ New Vacancy"}
+        </button>
+        {openForm && (
+          <div style={{ display: "flex", flexDirection: "column" }}>
+            <label htmlFor="applicationDate">submitting date:</label>
             <input
               type="date"
               value={applicationDate}
@@ -85,70 +88,63 @@ export default function Home({
               id="applicationDate"
               name="applicationDate"
             />
-            <button
-              type="submit"
-              onClick={() => setApplicationDate(applicationDate)}
-            >
-              Submit
-            </button>
-          </form>
-
-          <label>title</label>
-          <input
-            type="text"
-            value={title}
-            onChange={(e) => setTitle(e.target.value)}
-          />
-          <label>description</label>
-          <input
-            type="text"
-            value={description}
-            onChange={(e) => setDescription(e.target.value)}
-          />
-          <label>company</label>
-          <input
-            type="text"
-            value={company}
-            onChange={(e) => setCompany(e.target.value)}
-          />
-          <label>link</label>
-          <input
-            type="text"
-            value={link}
-            onChange={(e) => setLink(e.target.value)}
-          />
-          <label>location</label>
-          <input
-            type="text"
-            value={location}
-            onChange={(e) => setLocation(e.target.value)}
-          />
-          <label>recruiter</label>
-          <input
-            type="text"
-            value={recruiter}
-            onChange={(e) => setRecruiter(e.target.value)}
-          />
-          <label>language</label>
-          <input
-            type="text"
-            value={language}
-            onChange={(e) => setLanguage(e.target.value)}
-          />
-          <label>tag</label>
-          <input
-            type="text"
-            value={tag}
-            onChange={(e) => setTag(e.target.value)}
-          />
-          <label>feedback</label>
-          <input
-            type="text"
-            value={feedback}
-            onChange={(e) => setFeedback(e.target.value)}
-          />
-          <button onClick={submitApplication}>Add</button>
-        </div>
+            <label>title</label>
+            <input
+              type="text"
+              value={title}
+              onChange={(e) => setTitle(e.target.value)}
+            />
+            <label>company</label>
+            <input
+              type="text"
+              value={company}
+              onChange={(e) => setCompany(e.target.value)}
+            />
+            <label>description</label>
+            <input
+              type="text"
+              value={description}
+              onChange={(e) => setDescription(e.target.value)}
+            />
+            <label>link</label>
+            <input
+              type="text"
+              value={link}
+              onChange={(e) => setLink(e.target.value)}
+            />
+            <label>location</label>
+            <input
+              type="text"
+              value={location}
+              onChange={(e) => setLocation(e.target.value)}
+            />
+            <label>recruiter</label>
+            <input
+              type="text"
+              value={recruiter}
+              onChange={(e) => setRecruiter(e.target.value)}
+            />
+            <label>language</label>
+            <input
+              type="text"
+              value={language}
+              onChange={(e) => setLanguage(e.target.value)}
+            />
+            <label>tag</label>
+            <input
+              type="text"
+              value={tag}
+              onChange={(e) => setTag(e.target.value)}
+            />
+            <label>feedback</label>
+            <input
+              type="text"
+              value={feedback}
+              onChange={(e) => setFeedback(e.target.value)}
+            />
+            <button onClick={submitApplication}>Add</button>
+          </div>
+        )}
 
         <div className={styles.cardSection}>
           {response.map((application) => (
