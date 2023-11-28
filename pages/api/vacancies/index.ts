@@ -15,7 +15,7 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
       language,
       recruiter,
       location,
-      tag,
+      tags,
     } = req.body;
 
     try {
@@ -31,9 +31,9 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
           recruiter,
           location,
           tags: {
-            create: {
+            create: tags.map((tag: String) => ({
               name: tag,
-            },
+            })),
           },
         },
       });

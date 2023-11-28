@@ -37,6 +37,7 @@ export default function Home({
   const [recruiter, setRecruiter] = useState("");
   const [language, setLanguage] = useState("");
   const [tag, setTag] = useState("");
+  const [tags, setTags] = useState([]);
 
   const data = {
     title,
@@ -48,7 +49,7 @@ export default function Home({
     language,
     recruiter,
     location,
-    tag,
+    tags,
   };
 
   const submitApplication = async () => {
@@ -65,11 +66,23 @@ export default function Home({
       setRecruiter("");
       setLocation("");
       setTag("");
+      setTags([]);
+      console.log("New application added:", response);
     } catch (error) {
       console.log(`Error submitting the application: ${error}`);
     }
   };
   console.log("response?", response);
+  const addNewTag = () => {
+    tags.push(tag);
+    setTag("");
+  };
+
+  const removeTag = (i: number) => {
+    const newArray = [...tags.slice(0, i), ...tags.slice(i + 1)];
+    setTags(newArray);
+    setTag("");
+  };
 
   return (
     <main className={styles.main}>
@@ -130,12 +143,23 @@ export default function Home({
               value={language}
               onChange={(e) => setLanguage(e.target.value)}
             />
-            <label>tag</label>
+            <label>tags</label>
+            {tags &&
+              tags.map((tag, i) => (
+                <>
+                  <li key={i}>
+                    {tag} : index: {i}
+                  </li>
+                  <button onClick={() => removeTag(i)}>remove</button>
+                </>
+              ))}
             <input
               type="text"
               value={tag}
               onChange={(e) => setTag(e.target.value)}
             />
+            <button onClick={() => addNewTag()}>add</button>
+
             <label>feedback</label>
             <input
               type="text"
