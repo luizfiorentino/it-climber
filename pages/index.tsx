@@ -72,7 +72,7 @@ export default function Home({
       console.log(`Error submitting the application: ${error}`);
     }
   };
-  console.log("response?", response);
+
   const addNewTag = () => {
     tags.push(tag);
     setTag("");
@@ -92,89 +92,91 @@ export default function Home({
           {openForm ? "Hide form" : "+ New Vacancy"}
         </button>
         {openForm && (
-          <div style={{ display: "flex", flexDirection: "column" }}>
-            <label htmlFor="applicationDate">submitting date:</label>
-            <input
-              type="date"
-              value={applicationDate}
-              onChange={(e) => setApplicationDate(e.target.value)}
-              id="applicationDate"
-              name="applicationDate"
-            />
-            <label>title</label>
-            <input
-              type="text"
-              value={title}
-              onChange={(e) => setTitle(e.target.value)}
-            />
-            <label>company</label>
-            <input
-              type="text"
-              value={company}
-              onChange={(e) => setCompany(e.target.value)}
-            />
-            <label>description</label>
-            <input
-              type="text"
-              value={description}
-              onChange={(e) => setDescription(e.target.value)}
-            />
-            <label>link</label>
-            <input
-              type="text"
-              value={link}
-              onChange={(e) => setLink(e.target.value)}
-            />
-            <label>location</label>
-            <input
-              type="text"
-              value={location}
-              onChange={(e) => setLocation(e.target.value)}
-            />
-            <label>recruiter</label>
-            <input
-              type="text"
-              value={recruiter}
-              onChange={(e) => setRecruiter(e.target.value)}
-            />
-            <label>language</label>
-            <input
-              type="text"
-              value={language}
-              onChange={(e) => setLanguage(e.target.value)}
-            />
-            <label>tags</label>
-            {tags &&
-              tags.map((tag, i) => (
-                <>
-                  <li key={i}>
-                    {tag} : index: {i}
-                  </li>
-                  <button onClick={() => removeTag(i)}>remove</button>
-                </>
-              ))}
-            <input
-              type="text"
-              value={tag}
-              onChange={(e) => setTag(e.target.value)}
-            />
-            <button onClick={() => addNewTag()}>add</button>
+          <div className={styles.formContainer}>
+            <div className={styles.formBody}>
+              <label htmlFor="applicationDate">submitting date:</label>
+              <input
+                type="date"
+                value={applicationDate}
+                onChange={(e) => setApplicationDate(e.target.value)}
+                id="applicationDate"
+                name="applicationDate"
+              />
+              <label>title</label>
+              <input
+                type="text"
+                value={title}
+                onChange={(e) => setTitle(e.target.value)}
+              />
+              <label>company</label>
+              <input
+                type="text"
+                value={company}
+                onChange={(e) => setCompany(e.target.value)}
+              />
+              <label>description</label>
+              <input
+                type="text"
+                value={description}
+                onChange={(e) => setDescription(e.target.value)}
+              />
+              <label>link</label>
+              <input
+                type="text"
+                value={link}
+                onChange={(e) => setLink(e.target.value)}
+              />
+              <label>location</label>
+              <input
+                type="text"
+                value={location}
+                onChange={(e) => setLocation(e.target.value)}
+              />
+              <label>recruiter</label>
+              <input
+                type="text"
+                value={recruiter}
+                onChange={(e) => setRecruiter(e.target.value)}
+              />
+              <label>language</label>
+              <input
+                type="text"
+                value={language}
+                onChange={(e) => setLanguage(e.target.value)}
+              />
+              <label>tags</label>
+              {tags &&
+                tags.map((tag, i) => (
+                  <div key={i}>
+                    <li>{tag}</li>
+                    <button onClick={() => removeTag(i)}>remove</button>
+                  </div>
+                ))}
+              <input
+                type="text"
+                value={tag}
+                onChange={(e) => setTag(e.target.value)}
+              />
+              <button onClick={() => addNewTag()}>add</button>
 
-            <label>feedback</label>
-            <input
-              type="text"
-              value={feedback}
-              onChange={(e) => setFeedback(e.target.value)}
-            />
-            <button onClick={submitApplication}>Add</button>
+              <label>feedback</label>
+              <input
+                type="text"
+                value={feedback}
+                onChange={(e) => setFeedback(e.target.value)}
+              />
+            </div>
+            <div className={styles.submitButton}>
+              {" "}
+              <button onClick={submitApplication}>Add vacancy</button>
+            </div>
           </div>
         )}
-
-        <div className={styles.cardSection}>
-          {response.map((application) => (
-            <Card key={application.id} application={application} />
-          ))}
-        </div>
+      </div>
+      <div className={styles.cardSection}>
+        {response.map((application) => (
+          <Card key={application.id} application={application} />
+        ))}
       </div>
     </main>
   );

@@ -1,3 +1,4 @@
 .mainContainer {
-  color: dodgerblue;
+  /* color: dodgerblue; */
+  display: flex;
 }
