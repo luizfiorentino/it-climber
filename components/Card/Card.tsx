@@ -7,7 +7,7 @@ import axios from "axios";
 
 interface CardProps extends HTMLAttributes<HTMLDivElement> {
   application: {
-    id: number | null;
+    id: string;
     title: string;
     company: string;
     link?: string | null;
@@ -19,10 +19,11 @@ interface CardProps extends HTMLAttributes<HTMLDivElement> {
 
 export default function Card({ application, children, ...props }: CardProps) {
   const { id, title, company, link, description, feedback } = application;
-  const deleteApplication = async (vacancyId: number | null) => {
+  const deleteApplication = async (vacancyId: string | null) => {
     try {
       await axios.delete(`/api/vacancies/${vacancyId}`);
       console.log(`Vacancy with id ${vacancyId} deleted.`);
+      window.location.reload();
     } catch (error) {
       console.log("Error deleting vacancy:", error);
     }

@@ -12,7 +12,7 @@ export default async function handler(
 
       const vacancyToDelete = await prisma.vacancy.delete({
         where: {
-          id: Number(id),
+          id: String(id),
         },
       });
       res.status(200).json({ success: true, vacancy: vacancyToDelete });
