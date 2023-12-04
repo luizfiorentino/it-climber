@@ -11,16 +11,16 @@ import Card from "@/components/Card/Card";
 import Heading from "@/components/atoms/BigHeader/BigHeader";
 
 type Application = {
-  id: number;
+  id: string;
   title: string;
   company: string;
   link?: string | null;
   description?: string | null;
   feedback?: string | null;
-  recruiter?: String;
-  location?: String;
-  language?: String;
-  applicationDate?: String;
+  recruiter?: string;
+  location?: string;
+  language?: string;
+  applicationDate?: string | null;
 };
 
 export default function Home({
