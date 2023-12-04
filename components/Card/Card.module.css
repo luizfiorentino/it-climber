@@ -1,0 +1,22 @@
+.card {
+  border: 1px solid black;
+  margin: 1rem 0;
+  padding: 0.5rem;
+  display: flex;
+  flex-direction: column;
+  max-width: 20rem;
+}
+
+.companyField {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+@media (min-width: 375px) {
+  .card {
+    min-height: 30rem;
+    margin: 2rem 0;
+    padding: 1rem;
+  }
+}
