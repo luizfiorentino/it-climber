@@ -36,7 +36,7 @@ export default function Card({ application, children, ...props }: CardProps) {
       <Link href={`/applications/${id}`}>
         <Heading>{title}</Heading>
       </Link>
-      <Button>Font INTER ??</Button>
+
       <div className={styles.companyField}>
         <SmallHeading>@</SmallHeading>
         <RegularText>{company}</RegularText>
@@ -45,7 +45,7 @@ export default function Card({ application, children, ...props }: CardProps) {
       {description && <RegularText>Description: {description}</RegularText>}
       {feedback && <RegularText>Feedback: {feedback}</RegularText>}
       {children}
-      <button onClick={() => deleteApplication(id)}>Delete</button>
+      <Button onClick={() => deleteApplication(id)}>Delete</Button>
     </div>
   );
 }

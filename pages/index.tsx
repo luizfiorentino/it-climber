@@ -9,6 +9,7 @@ import axios from "axios";
 import prisma from "@/prisma/client";
 import Card from "@/components/Card/Card";
 import Heading from "@/components/atoms/BigHeader/BigHeader";
+import Button from "@/components/atoms/Button/Button";
 
 type Tag = {
   id: number;
@@ -94,9 +95,9 @@ export default function Home({
     <main className={styles.main}>
       <div>
         <Heading>Welcome to itClimber</Heading>
-        <button onClick={() => setOpenForm(!openForm)}>
+        <Button onClick={() => setOpenForm(!openForm)}>
           {openForm ? "Hide form" : "+ New Vacancy"}
-        </button>
+        </Button>
         {openForm && (
           <div className={styles.formContainer}>
             <div className={styles.formBody}>
@@ -174,7 +175,7 @@ export default function Home({
             </div>
             <div className={styles.submitButton}>
               {" "}
-              <button onClick={submitApplication}>Add vacancy</button>
+              <Button onClick={submitApplication}>Add vacancy</Button>
             </div>
           </div>
         )}
