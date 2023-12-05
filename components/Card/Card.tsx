@@ -4,6 +4,7 @@ import Heading from "../atoms/BigHeader/BigHeader";
 import SmallHeading from "../atoms/SmallHeader/SmallHeader";
 import RegularText from "../atoms/RegularText/RegularText";
 import axios from "axios";
+import Link from "next/link";
 
 interface CardProps extends HTMLAttributes<HTMLDivElement> {
   application: {
@@ -31,7 +32,9 @@ export default function Card({ application, children, ...props }: CardProps) {
 
   return (
     <div className={styles.card} {...props}>
-      <Heading>{title}</Heading>
+      <Link href={`/applications/${id}`}>
+        <Heading>{title}</Heading>
+      </Link>
       <div className={styles.companyField}>
         <SmallHeading>@</SmallHeading>
         <RegularText>{company}</RegularText>
