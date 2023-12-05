@@ -5,6 +5,7 @@ import SmallHeading from "../atoms/SmallHeader/SmallHeader";
 import RegularText from "../atoms/RegularText/RegularText";
 import axios from "axios";
 import Link from "next/link";
+import Button from "../atoms/Button/Button";
 
 interface CardProps extends HTMLAttributes<HTMLDivElement> {
   application: {
@@ -35,6 +36,7 @@ export default function Card({ application, children, ...props }: CardProps) {
       <Link href={`/applications/${id}`}>
         <Heading>{title}</Heading>
       </Link>
+      <Button>Font INTER ??</Button>
       <div className={styles.companyField}>
         <SmallHeading>@</SmallHeading>
         <RegularText>{company}</RegularText>
