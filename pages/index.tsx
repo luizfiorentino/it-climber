@@ -10,8 +10,13 @@ import prisma from "@/prisma/client";
 import Card from "@/components/Card/Card";
 import Heading from "@/components/atoms/BigHeader/BigHeader";
 
-type Application = {
+type Tag = {
   id: number;
+  name: string;
+};
+
+type Application = {
+  id: string;
   title: string;
   company: string;
   link?: string | null;
@@ -21,6 +26,7 @@ type Application = {
   location?: String;
   language?: String;
   applicationDate?: String;
+  tags?: Tag[];
 };
 
 export default function Home({
@@ -192,7 +198,7 @@ export const getServerSideProps: GetServerSideProps<{
 
     return {
       props: {
-        response: applications,
+        response: applications as Application[],
       },
     };
   } catch (error) {

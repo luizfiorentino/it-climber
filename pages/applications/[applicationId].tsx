@@ -29,8 +29,6 @@ type Application = {
 export default function DetailsPage({
   application,
 }: InferGetServerSidePropsType<typeof getServerSideProps>) {
-  console.log("details page, application", application);
-
   if (!application) {
     return (
       <main className={styles.main}>
