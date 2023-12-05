@@ -39,8 +39,6 @@ export default function Home({
   const [tag, setTag] = useState("");
   const [tags, setTags] = useState([]);
 
-  console.log("index page- response:", response);
-
   const data = {
     title,
     description,

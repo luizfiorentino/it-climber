@@ -32,8 +32,9 @@ export default function Card({ application, children, ...props }: CardProps) {
 
   return (
     <div className={styles.card} {...props}>
-      <Heading>{title}</Heading>
-      <Link href={`/applications/${id}`}>LINK</Link>
+      <Link href={`/applications/${id}`}>
+        <Heading>{title}</Heading>
+      </Link>
       <div className={styles.companyField}>
         <SmallHeading>@</SmallHeading>
         <RegularText>{company}</RegularText>
