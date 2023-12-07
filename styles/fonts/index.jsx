@@ -1,6 +1,16 @@
-import { Inter } from "next/font/google";
+import { Inter, Dosis, Josefin_Sans } from "next/font/google";
 
 export const fontInter = Inter({
   weight: ["100", "200", "300", "400", "500", "600", "700"],
+  subsets: ["latin"],
+});
+
+export const fontJosefinSans = Josefin_Sans({
+  weight: ["200", "300", "400", "500", "600", "700"],
+  subsets: ["latin"],
+});
+
+export const fontDosis = Dosis({
+  weight: ["200", "300", "400", "500", "600", "700"],
   subsets: ["latin"],
 });

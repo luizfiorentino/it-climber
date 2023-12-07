@@ -1,5 +1,5 @@
 import React, { ButtonHTMLAttributes } from "react";
-import { fontInter } from "@/styles/fonts";
+import { fontDosis } from "@/styles/fonts";
 import styles from "./Button.module.css";
 
 type ButtonProps = ButtonHTMLAttributes<HTMLButtonElement> & {
@@ -15,7 +15,7 @@ const Button: React.FC<ButtonProps> = ({
     <button
       {...props}
       className={`${styles.mainContainer} ${variant && styles[variant]} ${
-        fontInter.className
+        fontDosis.className
       }`}
     >
       {children}
