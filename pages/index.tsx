@@ -93,7 +93,7 @@ export default function Home({
 
   return (
     <main className={styles.main}>
-      <div>
+      <div className={styles.pageHeader}>
         <Header>Welcome to itClimber</Header>
         <Button onClick={() => setOpenForm(!openForm)}>
           {openForm ? "Hide form" : "+ New Vacancy"}
@@ -180,6 +180,7 @@ export default function Home({
           </div>
         )}
       </div>
+
       <div className={styles.cardSection}>
         {response.map((application) => (
           <Card key={application.id} application={application} />

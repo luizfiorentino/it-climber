@@ -3,14 +3,25 @@
   margin: 1rem 0;
   padding: 0.5rem;
   display: flex;
+
   flex-direction: column;
   max-width: 20rem;
+}
+
+.applicationTitle {
+  text-align: center;
 }
 
 .companyField {
   display: flex;
   flex-direction: row;
   align-items: center;
+}
+
+.deleteButton {
+  display: flex;
+  justify-content: center;
+  margin: 1rem;
 }
 
 @media (min-width: 375px) {

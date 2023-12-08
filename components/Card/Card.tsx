@@ -32,9 +32,12 @@ export default function Card({ application, children, ...props }: CardProps) {
 
   return (
     <div className={styles.card} {...props}>
-      <Link href={`/applications/${id}`}>
-        <Header>{title}</Header>
-      </Link>
+      <div className={styles.applicationTitle}>
+        <Link href={`/applications/${id}`}>
+          <Header>{title}</Header>
+        </Link>
+      </div>
+
       <div className={styles.companyField}>
         <Header level={4}>@</Header>
         <TextFragment>{company}</TextFragment>
@@ -43,9 +46,11 @@ export default function Card({ application, children, ...props }: CardProps) {
       {description && <TextFragment>Description: {description}</TextFragment>}
       {feedback && <TextFragment>Feedback: {feedback}</TextFragment>}
       {children}
-      <Button variant="red" onClick={() => deleteApplication(id)}>
-        Delete
-      </Button>
+      <div className={styles.deleteButton}>
+        <Button variant="red" onClick={() => deleteApplication(id)}>
+          Delete
+        </Button>
+      </div>
     </div>
   );
 }
