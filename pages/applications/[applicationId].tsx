@@ -5,8 +5,8 @@ import {
   GetServerSidePropsResult,
 } from "next";
 import prisma from "@/prisma/client";
-import Heading from "@/components/atoms/BigHeader/BigHeader";
-import SmallHeading from "@/components/atoms/SmallHeader/SmallHeader";
+import Heading from "@/components/atoms/Header/Header";
+import Header from "@/components/atoms/Header/Header";
 
 type Tag = {
   id: number;
@@ -33,7 +33,7 @@ export default function DetailsPage({
     return (
       <main className={styles.main}>
         <div>
-          <SmallHeading>Application not found</SmallHeading>
+          <Header>Application not found</Header>
         </div>
       </main>
     );
@@ -42,30 +42,24 @@ export default function DetailsPage({
     <main className={styles.main}>
       <div>
         <Heading>{application.title}</Heading>
-        <SmallHeading>
+        <Header>
           {application.applicationDate && application.applicationDate}
-        </SmallHeading>
-        <SmallHeading>@ {application.company}</SmallHeading>
-        <SmallHeading>{application.link && application.link}</SmallHeading>
-        <SmallHeading>
-          {application.location && application.location}
-        </SmallHeading>
-        {application.tags && <SmallHeading>tags:</SmallHeading>}
+        </Header>
+        <Header>@ {application.company}</Header>
+        <Header>{application.link && application.link}</Header>
+        <Header>{application.location && application.location}</Header>
+        {application.tags && <Header>tags:</Header>}
         {application.tags &&
           application.tags.map((tag) => (
-            <SmallHeading key={tag.id}>- {tag.name}</SmallHeading>
+            <Header key={tag.id}>- {tag.name}</Header>
           ))}
-        <SmallHeading>{application.description}</SmallHeading>
+        <Header>{application.description}</Header>
 
-        <SmallHeading>
-          {application.recruiter && application.recruiter}
-        </SmallHeading>
-        <SmallHeading>
+        <Header>{application.recruiter && application.recruiter}</Header>
+        <Header>
           {application.language && `language(s): ${application.language}`}
-        </SmallHeading>
-        <SmallHeading>
-          {application.feedback && application.feedback}
-        </SmallHeading>
+        </Header>
+        <Header>{application.feedback && application.feedback}</Header>
       </div>
     </main>
   );

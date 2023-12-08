@@ -1,10 +1,9 @@
 import React, { HTMLAttributes } from "react";
 import styles from "./Card.module.css";
-import Heading from "../atoms/BigHeader/BigHeader";
-import SmallHeading from "../atoms/SmallHeader/SmallHeader";
-import RegularText from "../atoms/RegularText/RegularText";
+import Header from "../atoms/Header/Header";
+import TextFragment from "../atoms/TextFragment/TextFragment";
 import axios from "axios";
-import Link from "next/link";
+import Link from "../atoms/Link/Link";
 import Button from "../atoms/Button/Button";
 
 interface CardProps extends HTMLAttributes<HTMLDivElement> {
@@ -34,18 +33,19 @@ export default function Card({ application, children, ...props }: CardProps) {
   return (
     <div className={styles.card} {...props}>
       <Link href={`/applications/${id}`}>
-        <Heading>{title}</Heading>
+        <Header>{title}</Header>
       </Link>
-
       <div className={styles.companyField}>
-        <SmallHeading>@</SmallHeading>
-        <RegularText>{company}</RegularText>
+        <Header level={4}>@</Header>
+        <TextFragment>{company}</TextFragment>
       </div>
-      {link && <SmallHeading>Link: {link}</SmallHeading>}
-      {description && <RegularText>Description: {description}</RegularText>}
-      {feedback && <RegularText>Feedback: {feedback}</RegularText>}
+      {link && <Header level={4}>Link: {link}</Header>}
+      {description && <TextFragment>Description: {description}</TextFragment>}
+      {feedback && <TextFragment>Feedback: {feedback}</TextFragment>}
       {children}
-      <Button onClick={() => deleteApplication(id)}>Delete</Button>
+      <Button variant="red" onClick={() => deleteApplication(id)}>
+        Delete
+      </Button>
     </div>
   );
 }

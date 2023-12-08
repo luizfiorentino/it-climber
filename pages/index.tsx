@@ -8,7 +8,7 @@ import {
 import axios from "axios";
 import prisma from "@/prisma/client";
 import Card from "@/components/Card/Card";
-import Heading from "@/components/atoms/BigHeader/BigHeader";
+import Header from "@/components/atoms/Header/Header";
 import Button from "@/components/atoms/Button/Button";
 
 type Tag = {
@@ -94,7 +94,7 @@ export default function Home({
   return (
     <main className={styles.main}>
       <div>
-        <Heading>Welcome to itClimber</Heading>
+        <Header>Welcome to itClimber</Header>
         <Button onClick={() => setOpenForm(!openForm)}>
           {openForm ? "Hide form" : "+ New Vacancy"}
         </Button>
