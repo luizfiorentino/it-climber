@@ -44,10 +44,9 @@ export default function Card({ application, children, ...props }: CardProps) {
         </Link>
       </div>
 
-      <div className={styles.companyField}>
-        <Header level={4}>@</Header>
-        <TextFragment>{company}</TextFragment>
-      </div>
+      <Header level={4}>Company: </Header>
+      <TextFragment>{company}</TextFragment>
+
       {link && (
         <>
           <Header level={4}>Link:</Header>
@@ -64,7 +63,7 @@ export default function Card({ application, children, ...props }: CardProps) {
         <>
           <Header level={4}>Tags: </Header>
           {tags.map((tag: Tag) => (
-            <TextFragment>{tag.name}</TextFragment>
+            <TextFragment variant="tag">{tag.name}</TextFragment>
           ))}
         </>
       )}

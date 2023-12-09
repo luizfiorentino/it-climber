@@ -7,13 +7,18 @@ export interface TextFragmentProps
   variant?: string;
 }
 
-const TextFragment = ({ children, className, ...props }: TextFragmentProps) => {
+const TextFragment = ({
+  children,
+  className,
+  variant,
+  ...props
+}: TextFragmentProps) => {
   return (
     <p
       {...props}
       className={`${styles.mainContainer} ${className} ${fontDosis.className}`}
     >
-      {children}
+      {variant === "tag" && "-"} {children}
     </p>
   );
 };

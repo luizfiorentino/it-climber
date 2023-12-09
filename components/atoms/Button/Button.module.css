@@ -5,6 +5,7 @@
   background-color: transparent;
   font-size: 14px;
   box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.3);
+  transition: 0.8s;
   font-weight: 600;
 }
 

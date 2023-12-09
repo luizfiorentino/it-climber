@@ -10,6 +10,7 @@ import prisma from "@/prisma/client";
 import Card from "@/components/Card/Card";
 import Header from "@/components/atoms/Header/Header";
 import Button from "@/components/atoms/Button/Button";
+import FormLabel from "@/components/atoms/FormLabel/FormLabel";
 
 type Tag = {
   id: number;
@@ -106,7 +107,7 @@ export default function Home({
         {openForm && (
           <div className={styles.formContainer}>
             <div className={styles.formBody}>
-              <label htmlFor="applicationDate">submitting date:</label>
+              <FormLabel>submitting date:</FormLabel>
               <input
                 type="date"
                 value={applicationDate}
@@ -114,49 +115,49 @@ export default function Home({
                 id="applicationDate"
                 name="applicationDate"
               />
-              <label>title</label>
+              <FormLabel>title</FormLabel>
               <input
                 type="text"
                 value={title}
                 onChange={(e) => setTitle(e.target.value)}
               />
-              <label>company</label>
+              <FormLabel>company</FormLabel>
               <input
                 type="text"
                 value={company}
                 onChange={(e) => setCompany(e.target.value)}
               />
-              <label>description</label>
+              <FormLabel>description</FormLabel>
               <input
                 type="text"
                 value={description}
                 onChange={(e) => setDescription(e.target.value)}
               />
-              <label>link</label>
+              <FormLabel>link</FormLabel>
               <input
                 type="text"
                 value={link}
                 onChange={(e) => setLink(e.target.value)}
               />
-              <label>location</label>
+              <FormLabel>location</FormLabel>
               <input
                 type="text"
                 value={location}
                 onChange={(e) => setLocation(e.target.value)}
               />
-              <label>recruiter</label>
+              <FormLabel>recruiter</FormLabel>
               <input
                 type="text"
                 value={recruiter}
                 onChange={(e) => setRecruiter(e.target.value)}
               />
-              <label>language</label>
+              <FormLabel>language</FormLabel>
               <input
                 type="text"
                 value={language}
                 onChange={(e) => setLanguage(e.target.value)}
               />
-              <label>tags</label>
+              <FormLabel>tags</FormLabel>
               {tags &&
                 tags.map((tag, i) => (
                   <div key={i}>
@@ -171,7 +172,7 @@ export default function Home({
               />
               <button onClick={() => addNewTag()}>add</button>
 
-              <label>feedback</label>
+              <FormLabel>feedback</FormLabel>
               <input
                 type="text"
                 value={feedback}
