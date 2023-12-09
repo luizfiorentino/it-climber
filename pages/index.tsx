@@ -11,6 +11,7 @@ import Card from "@/components/Card/Card";
 import Header from "@/components/atoms/Header/Header";
 import Button from "@/components/atoms/Button/Button";
 import FormLabel from "@/components/atoms/FormLabel/FormLabel";
+import Tag from "@/components/atoms/Tag/Tag";
 
 type Tag = {
   id: number;
@@ -107,7 +108,7 @@ export default function Home({
         {openForm && (
           <div className={styles.formContainer}>
             <div className={styles.formBody}>
-              <FormLabel>submitting date:</FormLabel>
+              <FormLabel>submitting date</FormLabel>
               <input
                 type="date"
                 value={applicationDate}
@@ -128,8 +129,8 @@ export default function Home({
                 onChange={(e) => setCompany(e.target.value)}
               />
               <FormLabel>description</FormLabel>
-              <input
-                type="text"
+              <textarea
+                // type="text"
                 value={description}
                 onChange={(e) => setDescription(e.target.value)}
               />
@@ -157,21 +158,24 @@ export default function Home({
                 value={language}
                 onChange={(e) => setLanguage(e.target.value)}
               />
-              <FormLabel>tags</FormLabel>
-              {tags &&
-                tags.map((tag, i) => (
-                  <div key={i}>
-                    <li>{tag}</li>
-                    <button onClick={() => removeTag(i)}>remove</button>
-                  </div>
-                ))}
-              <input
-                type="text"
-                value={tag}
-                onChange={(e) => setTag(e.target.value)}
-              />
-              <button onClick={() => addNewTag()}>add</button>
-
+              <div className={styles.formTagsContainer}>
+                <FormLabel>tags</FormLabel>
+                <div className={styles.formTags}>
+                  {tags &&
+                    tags.map((tag, i) => (
+                      <div key={i}>
+                        <Tag>{tag}</Tag>
+                        <button onClick={() => removeTag(i)}>remove</button>
+                      </div>
+                    ))}
+                  <input
+                    type="text"
+                    value={tag}
+                    onChange={(e) => setTag(e.target.value)}
+                  />
+                  <button onClick={() => addNewTag()}>add</button>
+                </div>
+              </div>
               <FormLabel>feedback</FormLabel>
               <input
                 type="text"

@@ -39,6 +39,18 @@
   /* max-width: 20rem; */
 }
 
+.formTagsContainer {
+  display: flex;
+  flex-direction: column;
+}
+
+.formTags {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 1rem;
+}
+
 @media (min-width: 375px) {
   .cardSection {
   }
