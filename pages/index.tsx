@@ -12,6 +12,7 @@ import Header from "@/components/atoms/Header/Header";
 import Button from "@/components/atoms/Button/Button";
 import FormLabel from "@/components/atoms/FormLabel/FormLabel";
 import Tag from "@/components/atoms/Tag/Tag";
+import Input from "@/components/atoms/Input/Input";
 
 type Tag = {
   id: number;
@@ -108,8 +109,8 @@ export default function Home({
         {openForm && (
           <div className={styles.formContainer}>
             <div className={styles.formBody}>
-              <FormLabel>submitting date</FormLabel>
-              <input
+              <FormLabel>submitted</FormLabel>
+              <Input
                 type="date"
                 value={applicationDate}
                 onChange={(e) => setApplicationDate(e.target.value)}
@@ -117,13 +118,13 @@ export default function Home({
                 name="applicationDate"
               />
               <FormLabel>title</FormLabel>
-              <input
+              <Input
                 type="text"
                 value={title}
                 onChange={(e) => setTitle(e.target.value)}
               />
               <FormLabel>company</FormLabel>
-              <input
+              <Input
                 type="text"
                 value={company}
                 onChange={(e) => setCompany(e.target.value)}
@@ -135,25 +136,25 @@ export default function Home({
                 onChange={(e) => setDescription(e.target.value)}
               />
               <FormLabel>link</FormLabel>
-              <input
+              <Input
                 type="text"
                 value={link}
                 onChange={(e) => setLink(e.target.value)}
               />
               <FormLabel>location</FormLabel>
-              <input
+              <Input
                 type="text"
                 value={location}
                 onChange={(e) => setLocation(e.target.value)}
               />
               <FormLabel>recruiter</FormLabel>
-              <input
+              <Input
                 type="text"
                 value={recruiter}
                 onChange={(e) => setRecruiter(e.target.value)}
               />
               <FormLabel>language</FormLabel>
-              <input
+              <Input
                 type="text"
                 value={language}
                 onChange={(e) => setLanguage(e.target.value)}
@@ -165,20 +166,23 @@ export default function Home({
                     tags.map((tag, i) => (
                       <div key={i}>
                         <Tag>{tag}</Tag>
-                        <button onClick={() => removeTag(i)}>remove</button>
+                        <Button variant="tagForm" onClick={() => removeTag(i)}>
+                          remove
+                        </Button>
                       </div>
                     ))}
-                  <input
+                  <Input
                     type="text"
                     value={tag}
                     onChange={(e) => setTag(e.target.value)}
                   />
-                  <button onClick={() => addNewTag()}>add</button>
+                  <Button variant="tagForm" onClick={() => addNewTag()}>
+                    add
+                  </Button>
                 </div>
               </div>
               <FormLabel>feedback</FormLabel>
-              <input
-                type="text"
+              <textarea
                 value={feedback}
                 onChange={(e) => setFeedback(e.target.value)}
               />
