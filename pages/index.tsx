@@ -164,9 +164,9 @@ export default function Home({
                 onChange={(e) => setLanguage(e.target.value)}
               />
               <div className={styles.formTagsContainer}>
-                <div className={styles.tagsHeader}>
+                <>
                   <FormLabel>tags</FormLabel>
-                </div>
+                </>
                 <div className={styles.formTags}>
                   {tags &&
                     tags.map((tag, i) => (
@@ -176,16 +176,18 @@ export default function Home({
                           remove
                         </Button>
                       </div>
-                    ))}
-                  {addTag && (
-                    <Input
-                      type="text"
-                      value={tag}
-                      onChange={(e) => setTag(e.target.value)}
-                    />
-                  )}
+                    ))}{" "}
                 </div>
-                <div className={styles.addTagButton}>
+
+                {addTag && (
+                  <Input
+                    type="text"
+                    value={tag}
+                    onChange={(e) => setTag(e.target.value)}
+                  />
+                )}
+
+                <div className={addTag ? styles.addTagButton : undefined}>
                   <Button
                     variant="tagForm"
                     onClick={

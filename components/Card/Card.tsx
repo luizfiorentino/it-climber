@@ -60,12 +60,14 @@ export default function Card({ application, children, ...props }: CardProps) {
         </>
       )}
       {tags && (
-        <>
-          <Header level={4}>Tags: </Header>
+        <div className={styles.tagsHeader}>
+          <Header level={4} variant="tagsHeader">
+            Tags:{" "}
+          </Header>
           {tags.map((tag: Tag) => (
             <TextFragment variant="tag">{tag.name}</TextFragment>
           ))}
-        </>
+        </div>
       )}
       {children}
       <div className={styles.deleteButton}>

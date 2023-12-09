@@ -1,5 +1,9 @@
 .mainContainer {
   overflow-wrap: break-word;
   word-wrap: break-word;
-  margin: 3px 0 0.8rem;
+  margin: 3px 0 1.2rem;
+}
+
+.tag {
+  margin-bottom: 3px;
 }

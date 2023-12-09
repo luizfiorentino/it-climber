@@ -12,14 +12,10 @@
 }
 
 .cardSection {
-  /* border: 1px solid red; */
-
   display: flex;
   flex-direction: column;
-
   align-items: center;
   margin-bottom: 4rem;
-  /* width: 100%; */
 }
 
 .formContainer {
@@ -27,7 +23,6 @@
   flex-direction: column;
   align-items: center;
   max-width: 30rem;
-
   border-radius: 8px;
   box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.3);
   padding: 1rem;
@@ -40,7 +35,6 @@
   flex-direction: column;
   align-items: right;
   margin-bottom: 2rem;
-  /* max-width: 20rem; */
 }
 
 .formTagsContainer {
@@ -48,19 +42,21 @@
   flex-direction: column;
 }
 
-.tagsHeader {
-  margin-bottom: 0.5rem;
-}
-
 .formTags {
   display: flex;
   gap: 1rem;
-  /* flex-direction: column; */
   flex-wrap: wrap;
-  /* align-items: flex-start; */
+}
+
+.addTagButton {
+  display: flex;
+  justify-content: right;
 }
 
 .removeButton {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   margin-bottom: 5px;
 }
 
@@ -69,12 +65,8 @@
     margin-bottom: 5rem;
   }
 
-  .formTags {
-    justify-content: center;
-  }
   .submitButton {
     position: absolute;
-
     bottom: 1rem;
     right: 1.6rem;
   }
@@ -85,7 +77,6 @@
     margin: 0 1rem;
     flex-direction: row;
     flex-wrap: wrap;
-    /* justify-content: space-between; */
     gap: 2rem;
   }
 }

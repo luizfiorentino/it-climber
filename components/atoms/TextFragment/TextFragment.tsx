@@ -16,7 +16,9 @@ const TextFragment = ({
   return (
     <p
       {...props}
-      className={`${styles.mainContainer} ${className} ${fontDosis.className}`}
+      className={`${styles.mainContainer} ${className} ${fontDosis.className} ${
+        variant === "tag" && styles[variant]
+      }`}
     >
       {variant === "tag" && "-"} {children}
     </p>

@@ -16,10 +16,20 @@
   word-wrap: break-word;
 }
 
+.tagsHeader {
+  /* margin-bottom: 1rem; */
+}
+
 .deleteButton {
   display: flex;
   justify-content: center;
   margin: 1rem;
+}
+
+@media (min-width: 375px) {
+  .deleteButton {
+    justify-content: right;
+  }
 }
 
 /* @media (min-width: 375px) {

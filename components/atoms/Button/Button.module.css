@@ -1,6 +1,5 @@
 .mainContainer {
   padding: 0.5rem 1rem;
-  /* border: 1px solid black; */
   border: 1px lightgrey;
   border-radius: 8px;
   background-color: transparent;
@@ -14,10 +13,6 @@
   cursor: pointer;
   opacity: 0.5;
   transition: 0.8s;
-}
-
-.displayForm {
-  margin-bottom: 1rem;
 }
 
 .tagForm {
@@ -35,5 +30,8 @@
   .mainContainer {
     /* padding: 1rem 2rem; */
     margin-bottom: 1rem;
+  }
+  .displayForm {
+    margin-bottom: 0rem;
   }
 }
