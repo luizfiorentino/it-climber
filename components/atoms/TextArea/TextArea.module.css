@@ -1,0 +1,5 @@
+.textareaContainer {
+  min-height: 5rem;
+  border: 0.5px solid grey;
+  border-radius: 4px;
+}

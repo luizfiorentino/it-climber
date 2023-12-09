@@ -13,6 +13,7 @@ import Button from "@/components/atoms/Button/Button";
 import FormLabel from "@/components/atoms/FormLabel/FormLabel";
 import Tag from "@/components/atoms/Tag/Tag";
 import Input from "@/components/atoms/Input/Input";
+import TextArea from "@/components/atoms/TextArea/TextArea";
 
 type Tag = {
   id: number;
@@ -47,6 +48,7 @@ export default function Home({
   const [location, setLocation] = useState("");
   const [recruiter, setRecruiter] = useState("");
   const [language, setLanguage] = useState("");
+  const [addTag, setAddTag] = useState(false);
   const [tag, setTag] = useState("");
   const [tags, setTags] = useState([]);
 
@@ -86,8 +88,13 @@ export default function Home({
   };
 
   const addNewTag = () => {
+    if (tag === "") {
+      setAddTag(false);
+      return;
+    }
     tags.push(tag);
     setTag("");
+    setAddTag(false);
   };
 
   const removeTag = (i: number) => {
@@ -130,7 +137,7 @@ export default function Home({
                 onChange={(e) => setCompany(e.target.value)}
               />
               <FormLabel>description</FormLabel>
-              <textarea
+              <TextArea
                 // type="text"
                 value={description}
                 onChange={(e) => setDescription(e.target.value)}
@@ -160,29 +167,39 @@ export default function Home({
                 onChange={(e) => setLanguage(e.target.value)}
               />
               <div className={styles.formTagsContainer}>
-                <FormLabel>tags</FormLabel>
+                <div className={styles.tagsHeader}>
+                  <FormLabel>tags</FormLabel>
+                </div>
                 <div className={styles.formTags}>
                   {tags &&
                     tags.map((tag, i) => (
-                      <div key={i}>
+                      <div key={i} className={styles.removeButton}>
                         <Tag>{tag}</Tag>
                         <Button variant="tagForm" onClick={() => removeTag(i)}>
                           remove
                         </Button>
                       </div>
                     ))}
-                  <Input
-                    type="text"
-                    value={tag}
-                    onChange={(e) => setTag(e.target.value)}
-                  />
-                  <Button variant="tagForm" onClick={() => addNewTag()}>
+                  {addTag && (
+                    <Input
+                      type="text"
+                      value={tag}
+                      onChange={(e) => setTag(e.target.value)}
+                    />
+                  )}
+
+                  <Button
+                    variant="tagForm"
+                    onClick={
+                      addTag ? () => addNewTag() : () => setAddTag(!addTag)
+                    }
+                  >
                     add
                   </Button>
                 </div>
               </div>
               <FormLabel>feedback</FormLabel>
-              <textarea
+              <TextArea
                 value={feedback}
                 onChange={(e) => setFeedback(e.target.value)}
               />
