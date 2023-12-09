@@ -1,6 +1,7 @@
 .mainContainer {
   padding: 0.5rem 1rem;
-  border: 1px solid black;
+  /* border: 1px solid black; */
+  border: 1px lightgrey;
   border-radius: 8px;
   background-color: transparent;
   font-size: 14px;
@@ -16,7 +17,6 @@
 }
 
 .displayForm {
-  border: 0.5px lightgrey;
   margin-bottom: 1rem;
 }
 

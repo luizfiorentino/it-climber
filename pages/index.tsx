@@ -184,7 +184,8 @@ export default function Home({
                       onChange={(e) => setTag(e.target.value)}
                     />
                   )}
-
+                </div>
+                <div className={styles.addTagButton}>
                   <Button
                     variant="tagForm"
                     onClick={
@@ -202,7 +203,6 @@ export default function Home({
               />
             </div>
             <div className={styles.submitButton}>
-              {" "}
               <Button onClick={submitApplication}>Add vacancy</Button>
             </div>
           </div>
