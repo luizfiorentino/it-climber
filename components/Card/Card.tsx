@@ -25,7 +25,7 @@ interface CardProps extends HTMLAttributes<HTMLDivElement> {
 }
 
 export default function Card({ application, children, ...props }: CardProps) {
-  const { id, title, company, link, location, feedback, tags } = application;
+  const { id, title, company, link, location, tags } = application;
   const deleteApplication = async (vacancyId: string | null) => {
     try {
       await axios.delete(`/api/vacancies/${vacancyId}`);
@@ -40,7 +40,7 @@ export default function Card({ application, children, ...props }: CardProps) {
     <div className={styles.card} {...props}>
       <div className={styles.applicationTitle}>
         <Link href={`/applications/${id}`}>
-          <Header>{title}</Header>
+          <Header variant="vacancyTitle">{title}</Header>
         </Link>
       </div>
 

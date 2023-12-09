@@ -106,11 +106,8 @@ export default function Home({
   return (
     <main className={styles.main}>
       <div className={styles.pageHeader}>
-        <Header>Welcome to itClimber</Header>
-        <Button
-          onClick={() => setOpenForm(!openForm)}
-          variant={openForm ? "hideForm" : undefined}
-        >
+        <Header variant="pageTitle">Welcome to itClimber</Header>
+        <Button onClick={() => setOpenForm(!openForm)} variant={"displayForm"}>
           {openForm ? "Hide form" : "+ New Vacancy"}
         </Button>
         {openForm && (

@@ -1,4 +1,6 @@
 .tagContainer {
+  overflow-wrap: break-word;
+  word-wrap: break-word;
   border: 1px solid black;
   border-radius: 2rem;
   padding: 0.5rem 1rem;
