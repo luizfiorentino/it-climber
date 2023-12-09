@@ -33,6 +33,7 @@ type Application = {
 export default function Home({
   response,
 }: InferGetServerSidePropsType<typeof getServerSideProps>) {
+  console.log("index page- response:", response);
   const [openForm, setOpenForm] = useState(false);
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
@@ -62,6 +63,7 @@ export default function Home({
   const submitApplication = async () => {
     try {
       const response = await axios.post(`/api/vacancies`, data);
+
       window.location.reload();
       setCompany("");
       setTitle("");
@@ -95,7 +97,10 @@ export default function Home({
     <main className={styles.main}>
       <div className={styles.pageHeader}>
         <Header>Welcome to itClimber</Header>
-        <Button onClick={() => setOpenForm(!openForm)}>
+        <Button
+          onClick={() => setOpenForm(!openForm)}
+          variant={openForm ? "hideForm" : undefined}
+        >
           {openForm ? "Hide form" : "+ New Vacancy"}
         </Button>
         {openForm && (
@@ -196,7 +201,11 @@ export const getServerSideProps: GetServerSideProps<{
   GetServerSidePropsResult<{ response: Application[] }>
 > => {
   try {
-    const applications = await prisma.vacancy.findMany();
+    const applications = await prisma.vacancy.findMany({
+      include: {
+        tags: true,
+      },
+    });
 
     return {
       props: {

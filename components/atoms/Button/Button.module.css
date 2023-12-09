@@ -14,6 +14,10 @@
   transition: 0.8s;
 }
 
+.hideForm {
+  margin-bottom: 1rem;
+}
+
 .red {
   color: red;
 }

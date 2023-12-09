@@ -6,20 +6,26 @@ import axios from "axios";
 import Link from "../atoms/Link/Link";
 import Button from "../atoms/Button/Button";
 
+type Tag = {
+  id: number;
+  name: string;
+};
+
 interface CardProps extends HTMLAttributes<HTMLDivElement> {
   application: {
     id: string;
     title: string;
     company: string;
     link?: string | null;
-    description?: string | null;
+    location?: string | null;
     feedback?: string | null;
+    tags?: Tag[] | null;
   };
   children?: React.ReactNode;
 }
 
 export default function Card({ application, children, ...props }: CardProps) {
-  const { id, title, company, link, description, feedback } = application;
+  const { id, title, company, link, location, feedback, tags } = application;
   const deleteApplication = async (vacancyId: string | null) => {
     try {
       await axios.delete(`/api/vacancies/${vacancyId}`);
@@ -42,9 +48,26 @@ export default function Card({ application, children, ...props }: CardProps) {
         <Header level={4}>@</Header>
         <TextFragment>{company}</TextFragment>
       </div>
-      {link && <Header level={4}>Link: {link}</Header>}
-      {description && <TextFragment>Description: {description}</TextFragment>}
-      {feedback && <TextFragment>Feedback: {feedback}</TextFragment>}
+      {link && (
+        <>
+          <Header level={4}>Link:</Header>
+          <TextFragment>{link}</TextFragment>{" "}
+        </>
+      )}
+      {location && (
+        <>
+          <Header level={4}>Location: </Header>
+          <TextFragment>{location}</TextFragment>
+        </>
+      )}
+      {tags && (
+        <>
+          <Header level={4}>Tags: </Header>
+          {tags.map((tag: Tag) => (
+            <TextFragment>{tag.name}</TextFragment>
+          ))}
+        </>
+      )}
       {children}
       <div className={styles.deleteButton}>
         <Button variant="red" onClick={() => deleteApplication(id)}>
