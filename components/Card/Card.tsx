@@ -5,6 +5,7 @@ import TextFragment from "../atoms/TextFragment/TextFragment";
 import axios from "axios";
 import Link from "../atoms/Link/Link";
 import Button from "../atoms/Button/Button";
+import Tag from "../atoms/Tag/Tag";
 
 type Tag = {
   id: number;
@@ -64,9 +65,11 @@ export default function Card({ application, children, ...props }: CardProps) {
           <Header level={4} variant="tagsHeader">
             Tags:{" "}
           </Header>
-          {tags.map((tag: Tag) => (
-            <TextFragment variant="tag">{tag.name}</TextFragment>
-          ))}
+          <div className={styles.tagsList}>
+            {tags.map((tag: Tag) => (
+              <Tag variant="tag">{tag.name}</Tag>
+            ))}
+          </div>
         </div>
       )}
       {children}

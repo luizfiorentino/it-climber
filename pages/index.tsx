@@ -170,9 +170,8 @@ export default function Home({
                 onChange={(e) => setLanguage(e.target.value)}
               />
               <div className={styles.formTagsContainer}>
-                <>
-                  <FormLabel>tags</FormLabel>
-                </>
+                <FormLabel>tags</FormLabel>
+
                 <div className={styles.formTags}>
                   {tags &&
                     tags.map((tag, i) => (
