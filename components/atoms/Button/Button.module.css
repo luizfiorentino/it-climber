@@ -22,6 +22,17 @@
   padding: 5px;
 }
 
+.hideForm {
+  margin-bottom: 0.8rem;
+  opacity: 0.5;
+  transition: 0.8s;
+}
+
+.hideForm:hover {
+  opacity: 0.3;
+  transition: 0.8s;
+}
+
 .red {
   color: red;
 }
@@ -33,5 +44,8 @@
   }
   .displayForm {
     margin-bottom: 0rem;
+  }
+  .hideForm {
+    margin-bottom: 0;
   }
 }

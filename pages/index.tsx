@@ -14,6 +14,7 @@ import FormLabel from "@/components/atoms/FormLabel/FormLabel";
 import Tag from "@/components/atoms/Tag/Tag";
 import Input from "@/components/atoms/Input/Input";
 import TextArea from "@/components/atoms/TextArea/TextArea";
+import Form from "@/components/Form/Form";
 
 type Tag = {
   id: number;
@@ -102,22 +103,39 @@ export default function Home({
     setTags(newArray);
     setTag("");
   };
+  const handleFormSubmit = (formData: FormData | null) => {
+    // Handle form submission logic here
+    console.log("Form data submitted:", formData);
+  };
 
   return (
     <main className={styles.main}>
       <div className={styles.pageHeader}>
         <Header variant="pageTitle">Welcome to itClimber</Header>
-        <div className={openForm ? styles.formButtonHide : styles.formButton}>
-          <Button
-            onClick={() => setOpenForm(!openForm)}
-            variant={"displayForm"}
-          >
-            {openForm ? "Hide form" : "+ New Vacancy"}
-          </Button>
-        </div>
+        {/* <div className={styles.formButton}>
+          {!openForm && (
+            <Button
+              onClick={() => setOpenForm(!openForm)}
+              variant={"displayForm"}
+            >
+              + New Vacancy
+            </Button>
+          )}
+        </div> */}
 
-        {openForm && (
+        <Form onSubmit={submitApplication} />
+        {/* {openForm && (
           <div className={styles.formContainer}>
+            <div className={styles.formButtonHide}>
+              {openForm && (
+                <Button
+                  onClick={() => setOpenForm(!openForm)}
+                  variant={"hideForm"}
+                >
+                  Hide form
+                </Button>
+              )}
+            </div>
             <div className={styles.formBody}>
               <FormLabel>submitted</FormLabel>
               <Input
@@ -213,7 +231,7 @@ export default function Home({
               <Button onClick={submitApplication}>Add vacancy</Button>
             </div>
           </div>
-        )}
+        )} */}
       </div>
 
       <div className={styles.cardSection}>
