@@ -29,6 +29,15 @@
   position: relative;
 }
 
+.formButton {
+  display: flex;
+  justify-content: center;
+}
+
+.formButtonHide {
+  margin-bottom: 1rem;
+}
+
 .formBody {
   width: 95%;
   display: flex;
@@ -63,6 +72,14 @@
 @media (min-width: 375px) {
   .formBody {
     margin-bottom: 5rem;
+  }
+
+  .formButton {
+    justify-content: right;
+  }
+  .formButtonHide {
+    display: flex;
+    justify-content: right;
   }
 
   .submitButton {

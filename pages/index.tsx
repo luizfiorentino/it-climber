@@ -107,9 +107,15 @@ export default function Home({
     <main className={styles.main}>
       <div className={styles.pageHeader}>
         <Header variant="pageTitle">Welcome to itClimber</Header>
-        <Button onClick={() => setOpenForm(!openForm)} variant={"displayForm"}>
-          {openForm ? "Hide form" : "+ New Vacancy"}
-        </Button>
+        <div className={openForm ? styles.formButtonHide : styles.formButton}>
+          <Button
+            onClick={() => setOpenForm(!openForm)}
+            variant={"displayForm"}
+          >
+            {openForm ? "Hide form" : "+ New Vacancy"}
+          </Button>
+        </div>
+
         {openForm && (
           <div className={styles.formContainer}>
             <div className={styles.formBody}>
