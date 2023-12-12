@@ -5,6 +5,7 @@ import TextArea from "@/components/atoms/TextArea/TextArea";
 import Tag from "@/components/atoms/Tag/Tag";
 import styles from "./Form.module.css";
 import FormLabel from "../atoms/FormLabel/FormLabel";
+import axios from "axios";
 
 interface FormProps {
   onSubmit: (data: FormData) => void;
@@ -71,30 +72,28 @@ const Form: React.FC<FormProps> = ({ onSubmit }) => {
     });
   };
 
-  
-    const submitApplication = async () => {
-        try {
-          const response = await axios.post(`/api/vacancies`, data);
-    
-          window.location.reload();
-          setCompany("");
-          setTitle("");
-          setFeedback("");
-          setDescription("");
-          setLink("");
-          setApplicationDate("");
-          setLanguage("");
-          setRecruiter("");
-          setLocation("");
-          setTag("");
-          setTags([]);
-          console.log("New application added:", response);
-        } catch (error) {
-          console.log(`Error submitting the application: ${error}`);
-        }
-      };
-    onSubmit(formData);
+  const submitApplication = async () => {
+    try {
+      const response = await axios.post(`/api/vacancies`, formData);
+
+      window.location.reload();
+      setCompany("");
+      setTitle("");
+      setFeedback("");
+      setDescription("");
+      setLink("");
+      setApplicationDate("");
+      setLanguage("");
+      setRecruiter("");
+      setLocation("");
+      setTag("");
+      setTags([]);
+      console.log("New application added:", response);
+    } catch (error) {
+      console.log(`Error submitting the application: ${error}`);
+    }
   };
+  //onSubmit(formData);
 
   return (
     <div>
