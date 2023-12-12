@@ -39,18 +39,8 @@ const Form: React.FC<FormProps> = ({ onSubmit }) => {
   });
 
   const [openForm, setOpenForm] = useState(false);
-  const [title, setTitle] = useState("");
-  const [description, setDescription] = useState("");
-  const [company, setCompany] = useState("");
-  const [link, setLink] = useState("");
-  const [feedback, setFeedback] = useState("");
-  const [applicationDate, setApplicationDate] = useState("");
-  const [location, setLocation] = useState("");
-  const [recruiter, setRecruiter] = useState("");
-  const [language, setLanguage] = useState("");
   const [addTag, setAddTag] = useState(false);
   const [tag, setTag] = useState("");
-  const [tags, setTags] = useState([]);
 
   const addNewTag = () => {
     setFormData((prevData) => ({
@@ -74,26 +64,17 @@ const Form: React.FC<FormProps> = ({ onSubmit }) => {
 
   const submitApplication = async () => {
     try {
+      onSubmit(formData);
       const response = await axios.post(`/api/vacancies`, formData);
 
       window.location.reload();
-      setCompany("");
-      setTitle("");
-      setFeedback("");
-      setDescription("");
-      setLink("");
-      setApplicationDate("");
-      setLanguage("");
-      setRecruiter("");
-      setLocation("");
       setTag("");
-      setTags([]);
+
       console.log("New application added:", response);
     } catch (error) {
       console.log(`Error submitting the application: ${error}`);
     }
   };
-  //onSubmit(formData);
 
   return (
     <div>
@@ -123,52 +104,91 @@ const Form: React.FC<FormProps> = ({ onSubmit }) => {
             <FormLabel>submitted</FormLabel>
             <Input
               type="date"
-              value={applicationDate}
-              onChange={(e) => setApplicationDate(e.target.value)}
+              value={formData.applicationDate}
+              onChange={(e) =>
+                setFormData({
+                  ...formData,
+                  applicationDate: e.target.value,
+                })
+              }
               id="applicationDate"
               name="applicationDate"
             />
             <FormLabel>title</FormLabel>
             <Input
               type="text"
-              value={title}
-              onChange={(e) => setTitle(e.target.value)}
+              value={formData.title}
+              onChange={(e) =>
+                setFormData({
+                  ...formData,
+                  title: e.target.value,
+                })
+              }
             />
             <FormLabel>company</FormLabel>
             <Input
               type="text"
-              value={company}
-              onChange={(e) => setCompany(e.target.value)}
+              value={formData.company}
+              onChange={(e) =>
+                setFormData({
+                  ...formData,
+                  company: e.target.value,
+                })
+              }
             />
             <FormLabel>description</FormLabel>
             <TextArea
-              // type="text"
-              value={description}
-              onChange={(e) => setDescription(e.target.value)}
+              value={formData.description}
+              onChange={(e) =>
+                setFormData({
+                  ...formData,
+                  description: e.target.value,
+                })
+              }
             />
             <FormLabel>link</FormLabel>
             <Input
               type="text"
-              value={link}
-              onChange={(e) => setLink(e.target.value)}
+              value={formData.link}
+              onChange={(e) =>
+                setFormData({
+                  ...formData,
+                  link: e.target.value,
+                })
+              }
             />
             <FormLabel>location</FormLabel>
             <Input
               type="text"
-              value={location}
-              onChange={(e) => setLocation(e.target.value)}
+              value={formData.location}
+              onChange={(e) =>
+                setFormData({
+                  ...formData,
+                  location: e.target.value,
+                })
+              }
             />
             <FormLabel>recruiter</FormLabel>
             <Input
               type="text"
-              value={recruiter}
-              onChange={(e) => setRecruiter(e.target.value)}
+              value={formData.recruiter}
+              onChange={(e) =>
+                setFormData({
+                  ...formData,
+                  recruiter: e.target.value,
+                })
+              }
             />
             <FormLabel>language</FormLabel>
             <Input
               type="text"
-              value={language}
-              onChange={(e) => setLanguage(e.target.value)}
+              value={formData.language}
+              onChange={(e) =>
+                setFormData({
+                  ...formData,
+                  language: e.target.value,
+                })
+              }
             />
           </div>
           <div className={styles.formTagsContainer}>
@@ -196,16 +216,20 @@ const Form: React.FC<FormProps> = ({ onSubmit }) => {
                 variant="tagForm"
                 onClick={addTag ? addNewTag : () => setAddTag(!addTag)}
               >
-                {addTag ? "add" : "toggle add"}
+                {!addTag ? "add tag" : "confirm"}
               </Button>
             </div>
           </div>
           <FormLabel>feedback</FormLabel>
           <TextArea
-            value={feedback}
-            onChange={(e) => setFeedback(e.target.value)}
+            value={formData.feedback}
+            onChange={(e) =>
+              setFormData({
+                ...formData,
+                feedback: e.target.value,
+              })
+            }
           />
-
           <div className={styles.submitButton}>
             <Button onClick={submitApplication}>Add vacancy</Button>
           </div>
