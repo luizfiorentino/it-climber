@@ -190,46 +190,55 @@ const Form: React.FC<FormProps> = ({ onSubmit }) => {
                 })
               }
             />
-          </div>
-          <div className={styles.formTagsContainer}>
-            <div className={styles.formTags}>
-              {formData.tags.map((tag, i) => (
-                <div key={i} className={styles.removeButton}>
-                  <Tag>{tag}</Tag>
-                  <Button variant="tagForm" onClick={() => removeTag(i)}>
-                    remove
-                  </Button>
-                </div>
-              ))}
+            <div
+              className={formData.tags.length ? styles.tagsLabel : undefined}
+            >
+              <FormLabel>tags</FormLabel>
             </div>
 
-            {addTag && (
-              <Input
-                type="text"
-                value={tag}
-                onChange={(e) => setTag(e.target.value)}
-              />
-            )}
-
-            <div className={addTag ? styles.addTagButton : undefined}>
-              <Button
-                variant="tagForm"
-                onClick={addTag ? addNewTag : () => setAddTag(!addTag)}
+            <div className={styles.formTagsContainer}>
+              <div
+                className={`${styles.formTags} ${
+                  formData.tags.length && styles.tagSpace
+                }`}
               >
-                {!addTag ? "add tag" : "confirm"}
-              </Button>
+                {formData.tags.map((tag, i) => (
+                  <div key={i} className={styles.removeButton}>
+                    <Tag>{tag}</Tag>
+                    <Button variant="tagForm" onClick={() => removeTag(i)}>
+                      remove
+                    </Button>
+                  </div>
+                ))}
+              </div>
+              {addTag && (
+                <Input
+                  type="text"
+                  value={tag}
+                  onChange={(e) => setTag(e.target.value)}
+                />
+              )}
+              <div className={addTag ? styles.addTagButton : undefined}>
+                <Button
+                  variant="tagForm"
+                  onClick={addTag ? addNewTag : () => setAddTag(!addTag)}
+                >
+                  {!addTag ? "add tag" : "confirm"}
+                </Button>
+              </div>
+              <FormLabel>feedback</FormLabel>
+              <TextArea
+                value={formData.feedback}
+                onChange={(e) =>
+                  setFormData({
+                    ...formData,
+                    feedback: e.target.value,
+                  })
+                }
+              />
             </div>
           </div>
-          <FormLabel>feedback</FormLabel>
-          <TextArea
-            value={formData.feedback}
-            onChange={(e) =>
-              setFormData({
-                ...formData,
-                feedback: e.target.value,
-              })
-            }
-          />
+
           <div className={styles.submitButton}>
             <Button onClick={submitApplication}>Add vacancy</Button>
           </div>

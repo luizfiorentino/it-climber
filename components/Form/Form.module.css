@@ -28,6 +28,10 @@
   margin-bottom: 2rem;
 }
 
+.tagsLabel {
+  margin-bottom: 1rem;
+}
+
 .formTagsContainer {
   display: flex;
   flex-direction: column;
@@ -37,6 +41,10 @@
   display: flex;
   gap: 1rem;
   flex-wrap: wrap;
+}
+
+.tagSpace {
+  margin-bottom: 1rem;
 }
 
 .addTagButton {
